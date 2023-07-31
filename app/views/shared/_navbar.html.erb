@@ -15,5 +15,21 @@
         </li>
       </ul>
     </div>
+    <div class="nav-item flex flex-row justify-content-end">
+      <% if @user && @user.id%>
+        <div class='d-flex flex-row justify-content-around'>
+          <div class='p-1 d-flex justify-content-center align-items-center'>
+            <%= @user.email%>
+          </div>
+          <div class=p-1>
+            <%= button_to "Log Out", logout_path,method: :delete, class:'btn btn-primary'%>
+          </div>
+        </div>
+      <% elsif request.original_url.split('/')[-1]!='sign_up'%>
+        <div class='d-flex flex-row justify-content-around'>
+          <%= link_to "Sign Up",sign_up_path, class:'btn btn-secondary'%>
+        </div>
+      <% end %>
+    </div>
   </div>
 </nav>

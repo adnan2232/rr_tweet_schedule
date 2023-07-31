@@ -1,0 +1,36 @@
+
+<div class='border border-dark rounded container shadow'>
+    <div class='d-flex justify-content-center align-items-center mt-2'>
+        <h1>Sign Up</h1>
+    </div>
+    <%= form_with model: @user, url:sign_up_path, data:{turbo:false} do |form|%>
+        <div class='d-flex flex-column p-2 w-100'>
+        
+            <div class='p-2 m-2'>
+                <%= form.label :email, role:'button' %>
+                <%= form.text_field :email, class:'w-100 rounded border-light p-2', placeholder:'abc@example.com' %>
+            </div>
+            <div class='p-2 m-2'>
+                <%= form.label :password, role:'button' %>
+                <%= form.password_field :password, class:'w-100 rounded border-light p-2', placeholder:'password'%>
+            </div>
+            <div class='p-2 m-2'>
+                <%= form.label :password_confirmation, role:'button' %>
+                <%= form.password_field :password_confirmation, class:'w-100 rounded border-light p-2', placeholder:'re-type password'%>
+            </div>
+
+            <div class='p-2 d-flex justify-content-center align-items-center m-2'>
+                <%= form.submit "Sign Up",class:'btn btn-primary'%>
+            </div>
+            
+        </div>
+    <%end%>
+
+    <%if @user.errors.any? %>
+        <div class='alert alert-danger'>
+            <% @user.errors.full_messages.each do|message|%>
+                <div class='p-2'><%= message%></div>
+            <%end%>
+        </div>
+    <%end%>
+</div>
