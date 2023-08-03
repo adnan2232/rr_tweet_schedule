@@ -1,0 +1,18 @@
+
+<div class='container border border-dark rounded p-5 h-100 shadow'>
+    <h1 class='d-flex justify-content-center align-items-center'>
+        Forget Password
+    </h1>
+
+    <%=form_with url: :reset_password, method: :post, class: 'd-flex flex-column justify-content-around' do|form|%>
+        <div class='p-2'>
+            <%= form.label :email,role: :button, class:'p-2'%>
+            <%= form.email_field :email, class:'w-100 rounded border-light p-2', placeholder:'Email'%>
+        </div>
+
+        <div class='p-2 d-flex justify-content-center align-items-center m-2'>
+            <%= form.submit "Submit",class:'btn btn-primary'%>
+        </div>
+    <%end%>
+
+</div>

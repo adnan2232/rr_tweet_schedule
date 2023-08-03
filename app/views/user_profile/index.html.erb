@@ -1,0 +1,42 @@
+<div class='container'>
+    <div class='d-flex flex-column justify-content-center items-align-center p-3'>
+
+        <div class='d-flex flex-row p-2'>
+            <label name='email' for='email'>
+                Email: 
+            </label>
+            <div class='d-inline'> <%=Current.user.email%></div>
+        </div>
+
+        <%= form_with model:Current.user,url:update_password_path, method: :put ,
+        class:'d-flex flex-column border-dark rounded shadow p-2',
+        data:{turbo:false} do|form|%>
+            <div class='d-flex flex-column p-2'>
+                <%= form.label :current_password, role: :button%>
+                <%= form.password_field :current_password, class:'w-100 rounded border-light p-2', placeholder:'current password'%>
+            </div>
+
+            <div class='d-flex flex-column p-2'>
+                <%= form.label :password, role: :button%>
+                <%= form.password_field :password, class:'w-100 rounded border-light p-2', placeholder:'new password'%>
+            </div>
+
+            <div class='d-flex flex-column p-2'>
+                <%= form.label :password_confirmation, role: :button%>
+                <%= form.password_field :password_confirmation, class:'w-100 rounded border-light p-2', placeholder:'new password confirmation'%>
+            </div>
+
+            <div class='p-2 d-flex justify-content-center align-items-center m-2'>
+                <%= form.submit "Change Password",class:'btn btn-primary'%>
+            </div>
+
+            <%if form.object.errors.any? %>
+                <div class='alert alert-danger'>
+                    <% form.object.errors.full_messages.each do|message|%>
+                        <div class='p-2'><%= message%></div>
+                    <%end%>
+                </div>
+            <%end%>
+        <%end%>
+    </div>
+</div>

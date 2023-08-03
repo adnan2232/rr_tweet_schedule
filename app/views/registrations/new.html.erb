@@ -24,13 +24,13 @@
             </div>
             
         </div>
+        <%if form.object.errors.any? %>
+            <div class='alert alert-danger'>
+                <% form.object.errors.full_messages.each do|message|%>
+                    <div class='p-2'><%= message%></div>
+                <%end%>
+            </div>
+        <%end%>
     <%end%>
 
-    <%if @user.errors.any? %>
-        <div class='alert alert-danger'>
-            <% @user.errors.full_messages.each do|message|%>
-                <div class='p-2'><%= message%></div>
-            <%end%>
-        </div>
-    <%end%>
 </div>

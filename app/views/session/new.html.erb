@@ -1,0 +1,19 @@
+<%= form_with url: signin_path do |form|%>
+    <div class='d-flex flex-column p-2 w-100'>
+        <h1 class='d-flex justify-content-center items-align-center'>Login</h1>
+        <div class='p-2 m-2'>
+            <%= form.label :email, role:'button' %>
+            <%= form.text_field :email, class:'w-100 rounded border-light p-2', placeholder:'abc@example.com' %>
+        </div>
+        <div class='p-2 m-2'>
+            <%= form.label :password, role:'button' %>
+            <%= form.password_field :password, class:'w-100 rounded border-light p-2', placeholder:'password'%>
+        </div>
+
+        <div class='p-2 d-flex flex-column justify-content-center align-items-center m-2'>
+            <%= link_to 'Forget password', :reset_password, class: 'link-info p-2'%>
+            <%= form.submit "Login",class:'btn btn-primary'%>
+        </div>
+            
+    </div>
+<%end%>
