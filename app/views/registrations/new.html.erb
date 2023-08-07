@@ -24,13 +24,7 @@
             </div>
             
         </div>
-        <%if form.object.errors.any? %>
-            <div class='alert alert-danger'>
-                <% form.object.errors.full_messages.each do|message|%>
-                    <div class='p-2'><%= message%></div>
-                <%end%>
-            </div>
-        <%end%>
+        <%= render "shared/form_errors", form:form%>
     <%end%>
 
 </div>

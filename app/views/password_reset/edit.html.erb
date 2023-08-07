@@ -19,13 +19,7 @@
             <%= form.submit "Reset password",class:'btn btn-primary'%>
         </div>
 
-        <%if form.object.errors.any?%>
-            <div class='alert alert-danger p-2 m-2'>
-                <%form.object.errors.full_messages.each do|message|%>
-                    <%=message%>
-                <%end%>
-            <div>
-        <%end%>
+        <%= render "shared/form_errors", form:form%>
         
     <%end%>
 

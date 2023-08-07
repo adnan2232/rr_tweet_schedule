@@ -1,0 +1,31 @@
+<div class="d-flex flex-column justify-content-start m-4 p-2">
+    <%= form_with model: tweet, method: method, data:{turbo:false} do |form|%>
+        <div class="mb-3 d-flex flex-column">
+            <%=form.label :twitter_account_id%>
+            <%=form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {},{class:"form-control p-3"}%>
+        </div>
+
+        <div class="mb-3">
+            <%= form.label :body%>
+            <%= form.text_area :body, class: "form-control"%>
+        </div>
+
+        <div class="mb-3  d-flex flex-column">
+            <%= form.label :publish_at%>
+            <div class="d-flex flex-row m-2 child-m child-p">
+                <%= form.datetime_select :publish_at, class:"p-2"%>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center m-4">
+            <%= form.button submit_text,class: "btn btn-primary  p2-2 m-2"%>
+            <% if form.object.persisted?%>
+                <%=button_to "Delete tweet", tweet, method: :delete,
+                    class:'m-2 p-2 btn btn-danger', data:{turbo_confirm: "Are your sure?"}
+                %>
+            <%end%>
+        </div>
+
+        <%= render "shared/form_errors", form:form%>
+    <%end%>
+</div>

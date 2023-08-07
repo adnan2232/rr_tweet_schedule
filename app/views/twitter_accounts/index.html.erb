@@ -1,0 +1,44 @@
+<div id="twitter_accounts">
+    <h1>
+        Your Twitter Accounts
+    </h1>
+    
+    <div class="row justify-content-center p-5 align-items-start">
+        <% @twitter_accounts.each do|account|%>
+            
+            <div class="col-md m-3 rounded" 
+                style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+                 position:relative;"
+            >
+                <a href="https://twitter.com/<%=account.username%>" 
+                    class="d-flex flex-row justify-content-start align-items-center p-2 text-dark text-decoration-none" 
+                    target="_blank"
+                >
+                  
+                    <img src="<%=account.image%>" class="rounded-circle">
+                
+                    <div class="d-flex flex-column justify-content-start p-2">
+                        <div class="fw-bold fs-4"><%= account.username %></div>
+                        
+                        <div class="fst-italic fw-lighter fs-6"><%= account.name%></div>
+                    </div>
+                 
+                </a>
+
+                <%=button_to image_tag("delete.png",style:"width:1rem;height:1rem"), 
+                account, method: :delete, data:{turbo_confirm: "Are you sure want to delete the data?"},
+                form_class: "position-absolute top-0 end-0 m-2 rounded"%>
+              
+            </div>
+        <%end%>
+
+    </div>
+
+    <%if Current.user%>
+    <div class="d-flex justify-content-center align-items-center">
+        <%=button_to "Link New Account", "/auth/twitter", method: :post, data:{turbo:false},class: "btn btn-info p-2"%>
+    </div>
+    <%end%>
+</div>
+

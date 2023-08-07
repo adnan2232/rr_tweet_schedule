@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
 
 
     def require_user_logged_in!
-        redirect_to :signin,alert: "You must be Signin to access profile route" if Current.user.nil?
+        redirect_to :signin,alert: "You must be Signin to access that feature" if Current.user.nil?
     end
 end

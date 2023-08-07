@@ -1,7 +1,20 @@
 
-<div class='d-flex align-items-center justify-content-center flex-col'>
+<div class='d-flex flex-column align-items-center justify-content-center '>
     <h1>
         Welcome to Schedule Tweet
     </h1>
 
+    <%if Current.user%>
+        
+        <%if Current.user.twitter_accounts.length > 0%>
+            <%=link_to "Schedule a tweet",:tweets, class:"btn btn-warning p-3 m-4"%>
+        <% else%>
+            <%=link_to "Link a twitter account",:twitter_accounts, class:"btn btn-info p-3 m-4"%>
+        <%end%>
+    <%else%>
+        <div class="d-flex flex-row">
+            <%=link_to "Already an user",:signin, class:"btn btn-primary p-3 m-4"%>
+            <%=link_to "Create an account",:signup, class:"btn btn-secondary p-3 m-4"%>
+        </div>
+    <%end%>
 </div>
